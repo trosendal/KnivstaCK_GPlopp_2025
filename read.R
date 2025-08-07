@@ -28,7 +28,7 @@ startlist[!startlist$ChipNr %in% df$chip, ]
 
 
 ## Graph the results of A
-png("A.png", width = 3000, height = 1500)
+svg("A.svg", width = 24, height = 12)
 par(mar = c(5.1, 20, 4.1, 2.1))
 cutoff1 <- as.POSIXlt("2025-08-06 19:03:00.000", format = "%Y-%m-%d %H:%M:%OS")
 cutoff2 <- as.POSIXlt("2025-08-06 19:43:00.000", format = "%Y-%m-%d %H:%M:%OS")
@@ -43,7 +43,7 @@ df2$placing <- as.numeric(ave(df2$datetime, df2$lap, FUN = rank))
 plot(y = df2$chip, x = df2$datetime,
      type = "p", pch = df2$pch, yaxt = "n",
      ylab = "", xlab = "", xaxt = "n",
-     main = "A grupp - Vinnare 23 varv", col = df2$type, cex = 3)
+     main = "A grupp - Vinnare 23 varv", col = df2$type, cex = 2)
 labsy <- levels(df2$chip)
 name <- startlist$Namn[match(labsy, startlist$ChipNr)]
 class <- startlist$Klass[match(labsy, startlist$ChipNr)]
@@ -61,13 +61,13 @@ abline(v = times, col = "grey90")
 ## Add lap number and rank
 text(x = df2$datetime,
      y = as.numeric(df2$chip) + 0.2,
-     labels = paste0("varv: ", df2$lap))
+     labels = paste0("varv: ", df2$lap), cex = 0.5)
 text(x = df2$datetime,
      y = as.numeric(df2$chip) - 0.2,
-     labels = paste0("plats: ", df2$placing))
+     labels = paste0("plats: ", df2$placing), cex = 0.5)
 dev.off()
 
-png("Damer.png", width = 3000, height = 1500)
+svg("Damer.svg", width = 24, height = 12)
 par(mar = c(5.1, 20, 4.1, 2.1))
 cutoff1 <- as.POSIXlt("2025-08-06 19:47:00.000", format = "%Y-%m-%d %H:%M:%OS")
 cutoff2 <- as.POSIXlt("2025-08-06 20:27:00.000", format = "%Y-%m-%d %H:%M:%OS")
@@ -82,7 +82,7 @@ df2$placing <- as.numeric(ave(df2$datetime, df2$lap, FUN = rank))
 plot(y = df2$chip, x = df2$datetime,
      type = "p", pch = df2$pch, yaxt = "n",
      ylab = "", xlab = "", xaxt = "n",
-     main = "Damer - Målgång 19 varv", col = df2$type, cex = 3)
+     main = "Damer - Målgång 19 varv", col = df2$type, cex = 2)
 labsy <- levels(df2$chip)
 name <- startlist$Namn[match(labsy, startlist$ChipNr)]
 class <- startlist$Klass[match(labsy, startlist$ChipNr)]
@@ -100,13 +100,13 @@ abline(v = times, col = "grey90")
 ## Add lap number and rank
 text(x = df2$datetime,
      y = as.numeric(df2$chip) + 0.1,
-     labels = paste0("varv: ", df2$lap))
+     labels = paste0("varv: ", df2$lap), cex = 0.75)
 text(x = df2$datetime,
      y = as.numeric(df2$chip) - 0.1,
-     labels = paste0("plats: ", df2$placing))
+     labels = paste0("plats: ", df2$placing), cex = 0.75)
 dev.off()
 
-png("Ungdomar.png", width = 3000, height = 750)
+svg("Ungdomar.svg", width = 24, height = 6)
 par(mar = c(5.1, 20, 4.1, 2.1))
 cutoff1 <- as.POSIXlt("2025-08-06 19:47:00.000", format = "%Y-%m-%d %H:%M:%OS")
 cutoff2 <- as.POSIXlt("2025-08-06 20:27:00.000", format = "%Y-%m-%d %H:%M:%OS")
@@ -121,7 +121,7 @@ df2$placing <- as.numeric(ave(df2$datetime, df2$lap, FUN = rank))
 plot(y = df2$chip, x = df2$datetime,
      type = "p", pch = df2$pch, yaxt = "n",
      ylab = "", xlab = "", xaxt = "n",
-     main = "Ungdom - Målgång 19 varv", col = df2$type, cex = 3)
+     main = "Ungdom - Målgång 19 varv", col = df2$type, cex = 2)
 labsy <- levels(df2$chip)
 name <- startlist$Namn[match(labsy, startlist$ChipNr)]
 class <- startlist$Klass[match(labsy, startlist$ChipNr)]
@@ -139,13 +139,13 @@ abline(v = times, col = "grey90")
 ## Add lap number and rank
 text(x = df2$datetime,
      y = as.numeric(df2$chip) + 0.05,
-     labels = paste0("varv: ", df2$lap))
+     labels = paste0("varv: ", df2$lap), cex = 0.75)
 text(x = df2$datetime,
      y = as.numeric(df2$chip) - 0.05,
-     labels = paste0("plats: ", df2$placing))
+     labels = paste0("plats: ", df2$placing), cex = 0.75)
 dev.off()
 
-png("C.png", width = 3000, height = 1500)
+svg("C.svg", width = 24, height = 12)
 par(mar = c(5.1, 20, 4.1, 2.1))
 cutoff1 <- as.POSIXlt("2025-08-06 19:47:00.000", format = "%Y-%m-%d %H:%M:%OS")
 cutoff2 <- as.POSIXlt("2025-08-06 20:27:00.000", format = "%Y-%m-%d %H:%M:%OS")
@@ -160,7 +160,7 @@ df2$placing <- as.numeric(ave(df2$datetime, df2$lap, FUN = rank))
 plot(y = df2$chip, x = df2$datetime,
      type = "p", pch = df2$pch, yaxt = "n",
      ylab = "", xlab = "", xaxt = "n",
-     main = "C - Målgång 19 varv", col = df2$type, cex = 3)
+     main = "C - Målgång 19 varv", col = df2$type, cex = 2)
 labsy <- levels(df2$chip)
 name <- startlist$Namn[match(labsy, startlist$ChipNr)]
 class <- startlist$Klass[match(labsy, startlist$ChipNr)]
@@ -178,13 +178,13 @@ abline(v = times, col = "grey90")
 ## Add lap number and rank
 text(x = df2$datetime,
      y = as.numeric(df2$chip) + 0.2,
-     labels = paste0("varv: ", df2$lap))
+     labels = paste0("varv: ", df2$lap), cex = 0.75)
 text(x = df2$datetime,
      y = as.numeric(df2$chip) - 0.2,
-     labels = paste0("plats: ", df2$placing))
+     labels = paste0("plats: ", df2$placing), cex = 0.75)
 dev.off()
 
-png("B.png", width = 3000, height = 1500)
+svg("B.svg", width = 24, height = 12)
 par(mar = c(5.1, 20, 4.1, 2.1))
 cutoff1 <- as.POSIXlt("2025-08-06 20:32:00.000", format = "%Y-%m-%d %H:%M:%OS")
 cutoff2 <- as.POSIXlt("2025-08-06 21:14:00.000", format = "%Y-%m-%d %H:%M:%OS")
@@ -199,7 +199,7 @@ df2$placing <- as.numeric(ave(df2$datetime, df2$lap, FUN = rank))
 plot(y = df2$chip, x = df2$datetime,
      type = "p", pch = df2$pch, yaxt = "n",
      ylab = "", xlab = "", xaxt = "n",
-     main = "B - Målgång 23 varv", col = df2$type, cex = 3)
+     main = "B - Målgång 23 varv", col = df2$type, cex = 1.5)
 labsy <- levels(df2$chip)
 name <- startlist$Namn[match(labsy, startlist$ChipNr)]
 class <- startlist$Klass[match(labsy, startlist$ChipNr)]
@@ -217,8 +217,8 @@ abline(v = times, col = "grey90")
 ## Add lap number and rank
 text(x = df2$datetime,
      y = as.numeric(df2$chip) + 0.2,
-     labels = paste0("varv: ", df2$lap))
+     labels = paste0("varv: ", df2$lap), cex = 0.5)
 text(x = df2$datetime,
      y = as.numeric(df2$chip) - 0.2,
-     labels = paste0("plats: ", df2$placing))
+     labels = paste0("plats: ", df2$placing), cex = 0.5)
 dev.off()
