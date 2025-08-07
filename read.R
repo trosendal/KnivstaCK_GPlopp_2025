@@ -25,9 +25,11 @@ labsx <- seq(from = cutoff1,
              to = cutoff2,
              length.out = 41)
 labsx <- format(as.POSIXlt(labsx), "%H:%M:%S")
-axis(side = 1, at = seq(from = cutoff1,
-                        to = cutoff2,
-                        length.out = 41), las = 2, labels = labsx)
+times <- seq(from = cutoff1,
+             to = cutoff2,
+             length.out = 41)
+axis(side = 1, at = times, las = 2, labels = labsx)
+abline(v = times)
 dev.off()
 
 pdf("C_ungdom_damer.pdf", width = 24, height = 24)
@@ -57,9 +59,11 @@ labsx <- seq(from = cutoff1,
              to = cutoff2,
              length.out = 41)
 labsx <- format(as.POSIXlt(labsx), "%H:%M:%S")
-axis(side = 1, at = seq(from = cutoff1,
-                        to = cutoff2,
-                        length.out = 41), las = 2, labels = labsx)
+times <- seq(from = cutoff1,
+             to = cutoff2,
+             length.out = 41)
+axis(side = 1, at = times, las = 2, labels = labsx)
+abline(v = times)
 dev.off()
 
 pdf("B.pdf", width = 24, height = 24)
