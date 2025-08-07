@@ -28,7 +28,7 @@ startlist[!startlist$ChipNr %in% df$chip, ]
 
 
 ## Graph the results of A
-svg("A.svg", width = 24, height = 12)
+svg("images/A.svg", width = 24, height = 18)
 par(mar = c(5.1, 20, 4.1, 2.1))
 cutoff1 <- as.POSIXlt("2025-08-06 19:03:00.000", format = "%Y-%m-%d %H:%M:%OS")
 cutoff2 <- as.POSIXlt("2025-08-06 19:43:00.000", format = "%Y-%m-%d %H:%M:%OS")
@@ -61,13 +61,13 @@ abline(v = times, col = "grey90")
 ## Add lap number and rank
 text(x = df2$datetime,
      y = as.numeric(df2$chip) + 0.2,
-     labels = paste0("varv: ", df2$lap), cex = 0.5)
+     labels = paste0("varv: ", df2$lap), cex = 0.75)
 text(x = df2$datetime,
      y = as.numeric(df2$chip) - 0.2,
-     labels = paste0("plats: ", df2$placing), cex = 0.5)
+     labels = paste0("plats: ", df2$placing), cex = 0.75)
 dev.off()
 
-svg("Damer.svg", width = 24, height = 12)
+svg("images/Damer.svg", width = 24, height = 12)
 par(mar = c(5.1, 20, 4.1, 2.1))
 cutoff1 <- as.POSIXlt("2025-08-06 19:47:00.000", format = "%Y-%m-%d %H:%M:%OS")
 cutoff2 <- as.POSIXlt("2025-08-06 20:27:00.000", format = "%Y-%m-%d %H:%M:%OS")
@@ -106,7 +106,7 @@ text(x = df2$datetime,
      labels = paste0("plats: ", df2$placing), cex = 0.75)
 dev.off()
 
-svg("Ungdomar.svg", width = 24, height = 6)
+svg("images/Ungdomar.svg", width = 24, height = 6)
 par(mar = c(5.1, 20, 4.1, 2.1))
 cutoff1 <- as.POSIXlt("2025-08-06 19:47:00.000", format = "%Y-%m-%d %H:%M:%OS")
 cutoff2 <- as.POSIXlt("2025-08-06 20:27:00.000", format = "%Y-%m-%d %H:%M:%OS")
@@ -145,7 +145,7 @@ text(x = df2$datetime,
      labels = paste0("plats: ", df2$placing), cex = 0.75)
 dev.off()
 
-svg("C.svg", width = 24, height = 12)
+svg("images/C.svg", width = 24, height = 12)
 par(mar = c(5.1, 20, 4.1, 2.1))
 cutoff1 <- as.POSIXlt("2025-08-06 19:47:00.000", format = "%Y-%m-%d %H:%M:%OS")
 cutoff2 <- as.POSIXlt("2025-08-06 20:27:00.000", format = "%Y-%m-%d %H:%M:%OS")
@@ -184,7 +184,7 @@ text(x = df2$datetime,
      labels = paste0("plats: ", df2$placing), cex = 0.75)
 dev.off()
 
-svg("B.svg", width = 24, height = 12)
+svg("images/B.svg", width = 24, height = 18)
 par(mar = c(5.1, 20, 4.1, 2.1))
 cutoff1 <- as.POSIXlt("2025-08-06 20:32:00.000", format = "%Y-%m-%d %H:%M:%OS")
 cutoff2 <- as.POSIXlt("2025-08-06 21:14:00.000", format = "%Y-%m-%d %H:%M:%OS")
@@ -217,8 +217,8 @@ abline(v = times, col = "grey90")
 ## Add lap number and rank
 text(x = df2$datetime,
      y = as.numeric(df2$chip) + 0.2,
-     labels = paste0("varv: ", df2$lap), cex = 0.5)
+     labels = paste0("varv: ", df2$lap), cex = 0.75)
 text(x = df2$datetime,
      y = as.numeric(df2$chip) - 0.2,
-     labels = paste0("plats: ", df2$placing), cex = 0.5)
+     labels = paste0("plats: ", df2$placing), cex = 0.75)
 dev.off()
