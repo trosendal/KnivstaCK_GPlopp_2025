@@ -43,7 +43,7 @@ df2$placing <- as.numeric(ave(df2$datetime, df2$lap, FUN = rank))
 plot(y = df2$chip, x = df2$datetime,
      type = "p", pch = df2$pch, yaxt = "n",
      ylab = "", xlab = "", xaxt = "n",
-     main = "A grupp", col = df2$type, cex = 3)
+     main = "A grupp - Vinnare 23 varv", col = df2$type, cex = 3)
 labsy <- levels(df2$chip)
 name <- startlist$Namn[match(labsy, startlist$ChipNr)]
 class <- startlist$Klass[match(labsy, startlist$ChipNr)]
@@ -82,7 +82,7 @@ df2$placing <- as.numeric(ave(df2$datetime, df2$lap, FUN = rank))
 plot(y = df2$chip, x = df2$datetime,
      type = "p", pch = df2$pch, yaxt = "n",
      ylab = "", xlab = "", xaxt = "n",
-     main = "Damer", col = df2$type, cex = 3)
+     main = "Damer - Målgång 19 varv", col = df2$type, cex = 3)
 labsy <- levels(df2$chip)
 name <- startlist$Namn[match(labsy, startlist$ChipNr)]
 class <- startlist$Klass[match(labsy, startlist$ChipNr)]
@@ -121,7 +121,7 @@ df2$placing <- as.numeric(ave(df2$datetime, df2$lap, FUN = rank))
 plot(y = df2$chip, x = df2$datetime,
      type = "p", pch = df2$pch, yaxt = "n",
      ylab = "", xlab = "", xaxt = "n",
-     main = "Ungdom", col = df2$type, cex = 3)
+     main = "Ungdom - Målgång 19 varv", col = df2$type, cex = 3)
 labsy <- levels(df2$chip)
 name <- startlist$Namn[match(labsy, startlist$ChipNr)]
 class <- startlist$Klass[match(labsy, startlist$ChipNr)]
@@ -160,7 +160,7 @@ df2$placing <- as.numeric(ave(df2$datetime, df2$lap, FUN = rank))
 plot(y = df2$chip, x = df2$datetime,
      type = "p", pch = df2$pch, yaxt = "n",
      ylab = "", xlab = "", xaxt = "n",
-     main = "C", col = df2$type, cex = 3)
+     main = "C - Målgång 19 varv", col = df2$type, cex = 3)
 labsy <- levels(df2$chip)
 name <- startlist$Namn[match(labsy, startlist$ChipNr)]
 class <- startlist$Klass[match(labsy, startlist$ChipNr)]
@@ -199,7 +199,7 @@ df2$placing <- as.numeric(ave(df2$datetime, df2$lap, FUN = rank))
 plot(y = df2$chip, x = df2$datetime,
      type = "p", pch = df2$pch, yaxt = "n",
      ylab = "", xlab = "", xaxt = "n",
-     main = "B", col = df2$type, cex = 3)
+     main = "B - Målgång 23 varv", col = df2$type, cex = 3)
 labsy <- levels(df2$chip)
 name <- startlist$Namn[match(labsy, startlist$ChipNr)]
 class <- startlist$Klass[match(labsy, startlist$ChipNr)]
