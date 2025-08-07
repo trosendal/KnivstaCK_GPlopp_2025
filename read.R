@@ -28,7 +28,7 @@ startlist[!startlist$ChipNr %in% df$chip, ]
 
 
 ## Graph the results of A
-pdf("A.pdf", width = 48, height = 24)
+png("A.png", width = 3000, height = 1500)
 par(mar = c(5.1, 20, 4.1, 2.1))
 cutoff1 <- as.POSIXlt("2025-08-06 19:03:00.000", format = "%Y-%m-%d %H:%M:%OS")
 cutoff2 <- as.POSIXlt("2025-08-06 19:43:00.000", format = "%Y-%m-%d %H:%M:%OS")
@@ -67,7 +67,7 @@ text(x = df2$datetime,
      labels = paste0("plats: ", df2$placing))
 dev.off()
 
-pdf("Damer.pdf", width = 48, height = 24)
+png("Damer.png", width = 3000, height = 1500)
 par(mar = c(5.1, 20, 4.1, 2.1))
 cutoff1 <- as.POSIXlt("2025-08-06 19:47:00.000", format = "%Y-%m-%d %H:%M:%OS")
 cutoff2 <- as.POSIXlt("2025-08-06 20:27:00.000", format = "%Y-%m-%d %H:%M:%OS")
@@ -106,7 +106,7 @@ text(x = df2$datetime,
      labels = paste0("plats: ", df2$placing))
 dev.off()
 
-pdf("Ungdomar.pdf", width = 48, height = 12)
+png("Ungdomar.png", width = 3000, height = 750)
 par(mar = c(5.1, 20, 4.1, 2.1))
 cutoff1 <- as.POSIXlt("2025-08-06 19:47:00.000", format = "%Y-%m-%d %H:%M:%OS")
 cutoff2 <- as.POSIXlt("2025-08-06 20:27:00.000", format = "%Y-%m-%d %H:%M:%OS")
@@ -145,7 +145,7 @@ text(x = df2$datetime,
      labels = paste0("plats: ", df2$placing))
 dev.off()
 
-pdf("C.pdf", width = 48, height = 24)
+png("C.png", width = 3000, height = 1500)
 par(mar = c(5.1, 20, 4.1, 2.1))
 cutoff1 <- as.POSIXlt("2025-08-06 19:47:00.000", format = "%Y-%m-%d %H:%M:%OS")
 cutoff2 <- as.POSIXlt("2025-08-06 20:27:00.000", format = "%Y-%m-%d %H:%M:%OS")
@@ -184,7 +184,7 @@ text(x = df2$datetime,
      labels = paste0("plats: ", df2$placing))
 dev.off()
 
-pdf("B.pdf", width = 48, height = 24)
+png("B.png", width = 3000, height = 1500)
 par(mar = c(5.1, 20, 4.1, 2.1))
 cutoff1 <- as.POSIXlt("2025-08-06 20:32:00.000", format = "%Y-%m-%d %H:%M:%OS")
 cutoff2 <- as.POSIXlt("2025-08-06 21:14:00.000", format = "%Y-%m-%d %H:%M:%OS")
