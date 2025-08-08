@@ -20,12 +20,11 @@ df$name <- startlist$Namn[match(df$chip, startlist$ChipNr)]
 df$class <- startlist$Klass[match(df$chip, startlist$ChipNr)]
 
 ## limit to just today
-df <- df[df$datetime >= as.POSIXlt("2025-08-06 18:50:00.000", format = "%Y-%m-%d %H:%M:%OS"), ]
+df <- df[df$datetime >= as.POSIXlt("2025-08-06 19:03:00.000", format = "%Y-%m-%d %H:%M:%OS"), ]
 
 ## Check for anyone with no Chip times:
 startlist[!startlist$ChipNr %in% df$chip, ]
 ## We know that Henrik Holm started and was first in B
-
 
 ## Graph the results of A
 svg("images/A.svg", width = 24, height = 18)
@@ -35,6 +34,8 @@ cutoff2 <- as.POSIXlt("2025-08-06 19:43:00.000", format = "%Y-%m-%d %H:%M:%OS")
 df2 <- df[df$datetime > cutoff1 & df$datetime < cutoff2, ]
 df2 <- df2[order(df2$chip, df2$datetime), ]
 df2$chip <- as.factor(df2$chip)
+## Didn't start?
+startlist[startlist$Klass == "A" & (!startlist$ChipNr %in% df2$chip), ]
 ##
 ## Add the lap number
 df2$lap <- as.numeric(ave(df2$datetime, df2$chip, FUN = rank))
@@ -74,6 +75,8 @@ cutoff2 <- as.POSIXlt("2025-08-06 20:27:00.000", format = "%Y-%m-%d %H:%M:%OS")
 df2 <- df[df$datetime > cutoff1 & df$datetime < cutoff2 & df$class == "Damer", ]
 df2 <- df2[order(df2$chip, df2$datetime), ]
 df2$chip <- as.factor(df2$chip)
+## Didn't start?
+startlist[startlist$Klass == "Damer" & (!startlist$ChipNr %in% df2$chip), ]
 ##
 ## Add the lap number
 df2$lap <- as.numeric(ave(df2$datetime, df2$chip, FUN = rank))
@@ -113,6 +116,8 @@ cutoff2 <- as.POSIXlt("2025-08-06 20:27:00.000", format = "%Y-%m-%d %H:%M:%OS")
 df2 <- df[df$datetime > cutoff1 & df$datetime < cutoff2 & df$class == "Ungdom", ]
 df2 <- df2[order(df2$chip, df2$datetime), ]
 df2$chip <- as.factor(df2$chip)
+## Didn't start?
+startlist[startlist$Klass == "Ungdom" & (!startlist$ChipNr %in% df2$chip), ]
 ##
 ## Add the lap number
 df2$lap <- as.numeric(ave(df2$datetime, df2$chip, FUN = rank))
@@ -152,6 +157,8 @@ cutoff2 <- as.POSIXlt("2025-08-06 20:27:00.000", format = "%Y-%m-%d %H:%M:%OS")
 df2 <- df[df$datetime > cutoff1 & df$datetime < cutoff2 & df$class == "C", ]
 df2 <- df2[order(df2$chip, df2$datetime), ]
 df2$chip <- as.factor(df2$chip)
+## Didn't start?
+startlist[startlist$Klass == "C" & (!startlist$ChipNr %in% df2$chip), ]
 ##
 ## Add the lap number
 df2$lap <- as.numeric(ave(df2$datetime, df2$chip, FUN = rank))
@@ -191,6 +198,8 @@ cutoff2 <- as.POSIXlt("2025-08-06 21:14:00.000", format = "%Y-%m-%d %H:%M:%OS")
 df2 <- df[df$datetime > cutoff1 & df$datetime < cutoff2 & df$class == "B", ]
 df2 <- df2[order(df2$chip, df2$datetime), ]
 df2$chip <- as.factor(df2$chip)
+## Didn't start?
+startlist[startlist$Klass == "B" & (!startlist$ChipNr %in% df2$chip), ]
 ##
 ## Add the lap number
 df2$lap <- as.numeric(ave(df2$datetime, df2$chip, FUN = rank))
