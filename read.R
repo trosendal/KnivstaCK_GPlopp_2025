@@ -33,13 +33,22 @@ cutoff1 <- as.POSIXlt("2025-08-06 19:03:00.000", format = "%Y-%m-%d %H:%M:%OS")
 cutoff2 <- as.POSIXlt("2025-08-06 19:43:00.000", format = "%Y-%m-%d %H:%M:%OS")
 df2 <- df[df$datetime > cutoff1 & df$datetime < cutoff2, ]
 df2 <- df2[order(df2$chip, df2$datetime), ]
-df2$chip <- as.factor(df2$chip)
 ## Didn't start?
 startlist[startlist$Klass == "A" & (!startlist$ChipNr %in% df2$chip), ]
 ##
 ## Add the lap number
 df2$lap <- as.numeric(ave(df2$datetime, df2$chip, FUN = rank))
 df2$placing <- as.numeric(ave(df2$datetime, df2$lap, FUN = rank))
+## Drop laps after finish
+df2 <- df2[df2$lap <= 23, ]
+## Order by rank at last lap
+finishrank <- NULL
+for (i in rev(unique(df2$lap))) {
+    dfinner <- df2[df2$lap == i, ]
+    finishers <- as.character(dfinner$chip[order(dfinner$placing)])
+    finishrank <- c(finishrank, finishers[!(finishers %in% finishrank)])
+}
+df2$chip <- factor(df2$chip, levels = rev(finishrank))
 ##
 plot(y = df2$chip, x = df2$datetime,
      type = "p", pch = df2$pch, yaxt = "n",
@@ -74,13 +83,22 @@ cutoff1 <- as.POSIXlt("2025-08-06 19:47:00.000", format = "%Y-%m-%d %H:%M:%OS")
 cutoff2 <- as.POSIXlt("2025-08-06 20:27:00.000", format = "%Y-%m-%d %H:%M:%OS")
 df2 <- df[df$datetime > cutoff1 & df$datetime < cutoff2 & df$class == "Damer", ]
 df2 <- df2[order(df2$chip, df2$datetime), ]
-df2$chip <- as.factor(df2$chip)
 ## Didn't start?
 startlist[startlist$Klass == "Damer" & (!startlist$ChipNr %in% df2$chip), ]
 ##
 ## Add the lap number
 df2$lap <- as.numeric(ave(df2$datetime, df2$chip, FUN = rank))
 df2$placing <- as.numeric(ave(df2$datetime, df2$lap, FUN = rank))
+## Drop laps after finish
+df2 <- df2[df2$lap <= 19, ]
+## Order by rank at last lap
+finishrank <- NULL
+for (i in rev(unique(df2$lap))) {
+    dfinner <- df2[df2$lap == i, ]
+    finishers <- as.character(dfinner$chip[order(dfinner$placing)])
+    finishrank <- c(finishrank, finishers[!(finishers %in% finishrank)])
+}
+df2$chip <- factor(df2$chip, levels = rev(finishrank))
 ##
 plot(y = df2$chip, x = df2$datetime,
      type = "p", pch = df2$pch, yaxt = "n",
@@ -115,13 +133,22 @@ cutoff1 <- as.POSIXlt("2025-08-06 19:47:00.000", format = "%Y-%m-%d %H:%M:%OS")
 cutoff2 <- as.POSIXlt("2025-08-06 20:27:00.000", format = "%Y-%m-%d %H:%M:%OS")
 df2 <- df[df$datetime > cutoff1 & df$datetime < cutoff2 & df$class == "Ungdom", ]
 df2 <- df2[order(df2$chip, df2$datetime), ]
-df2$chip <- as.factor(df2$chip)
 ## Didn't start?
 startlist[startlist$Klass == "Ungdom" & (!startlist$ChipNr %in% df2$chip), ]
 ##
 ## Add the lap number
 df2$lap <- as.numeric(ave(df2$datetime, df2$chip, FUN = rank))
 df2$placing <- as.numeric(ave(df2$datetime, df2$lap, FUN = rank))
+## Drop laps after finish
+df2 <- df2[df2$lap <= 19, ]
+## Order by rank at last lap
+finishrank <- NULL
+for (i in rev(unique(df2$lap))) {
+    dfinner <- df2[df2$lap == i, ]
+    finishers <- as.character(dfinner$chip[order(dfinner$placing)])
+    finishrank <- c(finishrank, finishers[!(finishers %in% finishrank)])
+}
+df2$chip <- factor(df2$chip, levels = rev(finishrank))
 ##
 plot(y = df2$chip, x = df2$datetime,
      type = "p", pch = df2$pch, yaxt = "n",
@@ -156,13 +183,22 @@ cutoff1 <- as.POSIXlt("2025-08-06 19:47:00.000", format = "%Y-%m-%d %H:%M:%OS")
 cutoff2 <- as.POSIXlt("2025-08-06 20:27:00.000", format = "%Y-%m-%d %H:%M:%OS")
 df2 <- df[df$datetime > cutoff1 & df$datetime < cutoff2 & df$class == "C", ]
 df2 <- df2[order(df2$chip, df2$datetime), ]
-df2$chip <- as.factor(df2$chip)
 ## Didn't start?
 startlist[startlist$Klass == "C" & (!startlist$ChipNr %in% df2$chip), ]
 ##
 ## Add the lap number
 df2$lap <- as.numeric(ave(df2$datetime, df2$chip, FUN = rank))
 df2$placing <- as.numeric(ave(df2$datetime, df2$lap, FUN = rank))
+## Drop laps after finish
+df2 <- df2[df2$lap <= 19, ]
+## Order by rank at last lap
+finishrank <- NULL
+for (i in rev(unique(df2$lap))) {
+    dfinner <- df2[df2$lap == i, ]
+    finishers <- as.character(dfinner$chip[order(dfinner$placing)])
+    finishrank <- c(finishrank, finishers[!(finishers %in% finishrank)])
+}
+df2$chip <- factor(df2$chip, levels = rev(finishrank))
 ##
 plot(y = df2$chip, x = df2$datetime,
      type = "p", pch = df2$pch, yaxt = "n",
@@ -197,13 +233,22 @@ cutoff1 <- as.POSIXlt("2025-08-06 20:32:00.000", format = "%Y-%m-%d %H:%M:%OS")
 cutoff2 <- as.POSIXlt("2025-08-06 21:14:00.000", format = "%Y-%m-%d %H:%M:%OS")
 df2 <- df[df$datetime > cutoff1 & df$datetime < cutoff2 & df$class == "B", ]
 df2 <- df2[order(df2$chip, df2$datetime), ]
-df2$chip <- as.factor(df2$chip)
 ## Didn't start?
 startlist[startlist$Klass == "B" & (!startlist$ChipNr %in% df2$chip), ]
 ##
 ## Add the lap number
 df2$lap <- as.numeric(ave(df2$datetime, df2$chip, FUN = rank))
 df2$placing <- as.numeric(ave(df2$datetime, df2$lap, FUN = rank))
+## Drop laps after finish
+df2 <- df2[df2$lap <= 23, ]
+## Order by rank at last lap
+finishrank <- NULL
+for (i in rev(unique(df2$lap))) {
+    dfinner <- df2[df2$lap == i, ]
+    finishers <- as.character(dfinner$chip[order(dfinner$placing)])
+    finishrank <- c(finishrank, finishers[!(finishers %in% finishrank)])
+}
+df2$chip <- factor(df2$chip, levels = rev(finishrank))
 ##
 plot(y = df2$chip, x = df2$datetime,
      type = "p", pch = df2$pch, yaxt = "n",
