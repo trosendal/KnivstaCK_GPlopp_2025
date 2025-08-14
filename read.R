@@ -34,8 +34,7 @@ cutoff2 <- as.POSIXlt("2025-08-06 19:43:00.000", format = "%Y-%m-%d %H:%M:%OS")
 df2 <- df[df$datetime > cutoff1 & df$datetime < cutoff2, ]
 df2 <- df2[order(df2$chip, df2$datetime), ]
 ## Didn't start?
-startlist[startlist$Klass == "A" & (!startlist$ChipNr %in% df2$chip), ]
-##
+DNS <- startlist[startlist$Klass == "A" & (!startlist$ChipNr %in% df2$chip), ]
 ## Add the lap number
 df2$lap <- as.numeric(ave(df2$datetime, df2$chip, FUN = rank))
 df2$placing <- as.numeric(ave(df2$datetime, df2$lap, FUN = rank))
@@ -48,16 +47,18 @@ for (i in rev(unique(df2$lap))) {
     finishers <- as.character(dfinner$chip[order(dfinner$placing)])
     finishrank <- c(finishrank, finishers[!(finishers %in% finishrank)])
 }
+finishrank <- c(finishrank, DNS$ChipNr)
 df2$chip <- factor(df2$chip, levels = rev(finishrank))
 ##
 plot(y = df2$chip, x = df2$datetime,
      type = "p", pch = df2$pch, yaxt = "n",
      ylab = "", xlab = "", xaxt = "n",
-     main = "A grupp - Vinnare 23 varv", col = df2$type, cex = 2)
+     main = "A grupp - Vinnare 23 varv", col = df2$type, cex = 2,
+     ylim = range(seq_len(length(levels(df2$chip)))))
 labsy <- levels(df2$chip)
 name <- startlist$Namn[match(labsy, startlist$ChipNr)]
 class <- startlist$Klass[match(labsy, startlist$ChipNr)]
-axis(side = 2, at = sort(as.numeric(unique(df2$chip))),
+axis(side = 2, at = seq_len(length(levels(df2$chip))),
      labels = paste0(name, "(", class, ")", ", ", labsy), las = 1)
 labsx <- seq(from = cutoff1,
              to = cutoff2,
@@ -84,7 +85,7 @@ cutoff2 <- as.POSIXlt("2025-08-06 20:27:00.000", format = "%Y-%m-%d %H:%M:%OS")
 df2 <- df[df$datetime > cutoff1 & df$datetime < cutoff2 & df$class == "Damer", ]
 df2 <- df2[order(df2$chip, df2$datetime), ]
 ## Didn't start?
-startlist[startlist$Klass == "Damer" & (!startlist$ChipNr %in% df2$chip), ]
+DNS <- startlist[startlist$Klass == "Damer" & (!startlist$ChipNr %in% df2$chip), ]
 ##
 ## Add the lap number
 df2$lap <- as.numeric(ave(df2$datetime, df2$chip, FUN = rank))
@@ -98,16 +99,18 @@ for (i in rev(unique(df2$lap))) {
     finishers <- as.character(dfinner$chip[order(dfinner$placing)])
     finishrank <- c(finishrank, finishers[!(finishers %in% finishrank)])
 }
+finishrank <- c(finishrank, DNS$ChipNr)
 df2$chip <- factor(df2$chip, levels = rev(finishrank))
 ##
 plot(y = df2$chip, x = df2$datetime,
      type = "p", pch = df2$pch, yaxt = "n",
      ylab = "", xlab = "", xaxt = "n",
-     main = "Damer - Målgång 19 varv", col = df2$type, cex = 2)
+     main = "Damer - Målgång 19 varv", col = df2$type, cex = 2,
+     ylim = range(seq_len(length(levels(df2$chip)))))
 labsy <- levels(df2$chip)
 name <- startlist$Namn[match(labsy, startlist$ChipNr)]
 class <- startlist$Klass[match(labsy, startlist$ChipNr)]
-axis(side = 2, at = sort(as.numeric(unique(df2$chip))),
+axis(side = 2, at = seq_len(length(levels(df2$chip))),
      labels = paste0(name, "(", class, ")", ", ", labsy), las = 1)
 labsx <- seq(from = cutoff1,
              to = cutoff2,
@@ -134,7 +137,7 @@ cutoff2 <- as.POSIXlt("2025-08-06 20:27:00.000", format = "%Y-%m-%d %H:%M:%OS")
 df2 <- df[df$datetime > cutoff1 & df$datetime < cutoff2 & df$class == "Ungdom", ]
 df2 <- df2[order(df2$chip, df2$datetime), ]
 ## Didn't start?
-startlist[startlist$Klass == "Ungdom" & (!startlist$ChipNr %in% df2$chip), ]
+DNS <- startlist[startlist$Klass == "Ungdom" & (!startlist$ChipNr %in% df2$chip), ]
 ##
 ## Add the lap number
 df2$lap <- as.numeric(ave(df2$datetime, df2$chip, FUN = rank))
@@ -148,16 +151,18 @@ for (i in rev(unique(df2$lap))) {
     finishers <- as.character(dfinner$chip[order(dfinner$placing)])
     finishrank <- c(finishrank, finishers[!(finishers %in% finishrank)])
 }
+finishrank <- c(finishrank, DNS$ChipNr)
 df2$chip <- factor(df2$chip, levels = rev(finishrank))
 ##
 plot(y = df2$chip, x = df2$datetime,
      type = "p", pch = df2$pch, yaxt = "n",
      ylab = "", xlab = "", xaxt = "n",
-     main = "Ungdom - Målgång 19 varv", col = df2$type, cex = 2)
+     main = "Ungdom - Målgång 19 varv", col = df2$type, cex = 2,
+     ylim = range(seq_len(length(levels(df2$chip)))))
 labsy <- levels(df2$chip)
 name <- startlist$Namn[match(labsy, startlist$ChipNr)]
 class <- startlist$Klass[match(labsy, startlist$ChipNr)]
-axis(side = 2, at = sort(as.numeric(unique(df2$chip))),
+axis(side = 2, at = seq_len(length(levels(df2$chip))),
      labels = paste0(name, "(", class, ")", ", ", labsy), las = 1)
 labsx <- seq(from = cutoff1,
              to = cutoff2,
@@ -184,7 +189,7 @@ cutoff2 <- as.POSIXlt("2025-08-06 20:27:00.000", format = "%Y-%m-%d %H:%M:%OS")
 df2 <- df[df$datetime > cutoff1 & df$datetime < cutoff2 & df$class == "C", ]
 df2 <- df2[order(df2$chip, df2$datetime), ]
 ## Didn't start?
-startlist[startlist$Klass == "C" & (!startlist$ChipNr %in% df2$chip), ]
+DNS <- startlist[startlist$Klass == "C" & (!startlist$ChipNr %in% df2$chip), ]
 ##
 ## Add the lap number
 df2$lap <- as.numeric(ave(df2$datetime, df2$chip, FUN = rank))
@@ -198,16 +203,18 @@ for (i in rev(unique(df2$lap))) {
     finishers <- as.character(dfinner$chip[order(dfinner$placing)])
     finishrank <- c(finishrank, finishers[!(finishers %in% finishrank)])
 }
+finishrank <- c(finishrank, DNS$ChipNr)
 df2$chip <- factor(df2$chip, levels = rev(finishrank))
 ##
 plot(y = df2$chip, x = df2$datetime,
      type = "p", pch = df2$pch, yaxt = "n",
      ylab = "", xlab = "", xaxt = "n",
-     main = "C - Målgång 19 varv", col = df2$type, cex = 2)
+     main = "C - Målgång 19 varv", col = df2$type, cex = 2,
+     ylim = range(seq_len(length(levels(df2$chip)))))
 labsy <- levels(df2$chip)
 name <- startlist$Namn[match(labsy, startlist$ChipNr)]
 class <- startlist$Klass[match(labsy, startlist$ChipNr)]
-axis(side = 2, at = sort(as.numeric(unique(df2$chip))),
+axis(side = 2, seq_len(length(levels(df2$chip))),
      labels = paste0(name, "(", class, ")", ", ", labsy), las = 1)
 labsx <- seq(from = cutoff1,
              to = cutoff2,
@@ -234,7 +241,7 @@ cutoff2 <- as.POSIXlt("2025-08-06 21:14:00.000", format = "%Y-%m-%d %H:%M:%OS")
 df2 <- df[df$datetime > cutoff1 & df$datetime < cutoff2 & df$class == "B", ]
 df2 <- df2[order(df2$chip, df2$datetime), ]
 ## Didn't start?
-startlist[startlist$Klass == "B" & (!startlist$ChipNr %in% df2$chip), ]
+DNS <- startlist[startlist$Klass == "B" & (!startlist$ChipNr %in% df2$chip), ]
 ##
 ## Add the lap number
 df2$lap <- as.numeric(ave(df2$datetime, df2$chip, FUN = rank))
@@ -248,16 +255,18 @@ for (i in rev(unique(df2$lap))) {
     finishers <- as.character(dfinner$chip[order(dfinner$placing)])
     finishrank <- c(finishrank, finishers[!(finishers %in% finishrank)])
 }
+finishrank <- c(finishrank, DNS$ChipNr)
 df2$chip <- factor(df2$chip, levels = rev(finishrank))
 ##
 plot(y = df2$chip, x = df2$datetime,
      type = "p", pch = df2$pch, yaxt = "n",
      ylab = "", xlab = "", xaxt = "n",
-     main = "B - Målgång 23 varv", col = df2$type, cex = 1.5)
+     main = "B - Målgång 23 varv", col = df2$type, cex = 1.5,
+     ylim = range(seq_len(length(levels(df2$chip)))))
 labsy <- levels(df2$chip)
 name <- startlist$Namn[match(labsy, startlist$ChipNr)]
 class <- startlist$Klass[match(labsy, startlist$ChipNr)]
-axis(side = 2, at = sort(as.numeric(unique(df2$chip))),
+axis(side = 2, at = seq_len(length(levels(df2$chip))),
      labels = paste0(name, "(", class, ")", ", ", labsy), las = 1)
 labsx <- seq(from = cutoff1,
              to = cutoff2,
